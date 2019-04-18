@@ -38,7 +38,9 @@ class App extends Component {
   }
 
   clearList = () => {
-    console.log('clearList');
+    this.setState({
+      items:[]
+    })
   }
 
   handleDelete = (id) => {
