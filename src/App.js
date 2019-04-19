@@ -3,7 +3,6 @@ import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import uuid from 'uuid';
 
-
 class App extends Component {
 
   state = {
