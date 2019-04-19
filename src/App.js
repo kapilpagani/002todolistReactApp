@@ -39,13 +39,12 @@ class App extends Component {
 
   clearList = () => {
     this.setState({
-      items:[]
+      items: []
     })
   }
 
   handleDelete = (id) => {
-    console.log(`handleDelete ${id}`);
-    const items = this.state.items.filter(todo=>{
+    const items = this.state.items.filter(todo => {
       return todo.id !== id
     })
     this.setState({
@@ -54,11 +53,22 @@ class App extends Component {
   }
 
   handleEdit = (id) => {
-    console.log(`handle Edit ${id}`);
+    const filteredItems = this.state.items.filter(todo => {
+      return todo.id !== id
+    })
+    const selectedItem = this.state.items.find(todo => {
+      return todo.id === id
+    });
+    this.setState({
+      items: filteredItems,
+      item: selectedItem.title,
+      id: id,
+      editItem: true
+    })
   }
 
   render() {
-    
+
     return (
       <div className="container">
         <div className="row">
@@ -66,7 +76,7 @@ class App extends Component {
             <h3 className="text-capitalize text-center">
               todo input
             </h3>
-            <TodoForm item={this.state.item} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editItem={this.editItem} />
+            <TodoForm item={this.state.item} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editItem={this.state.editItem} />
             <TodoList items={this.state.items} clearList={this.clearList} handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
           </div>
         </div>
