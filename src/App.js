@@ -9,7 +9,8 @@ class App extends Component {
     items: [],
     id: uuid(),
     item: '',
-    editItem: false
+    editItem: false,
+    disabled: true
   }
 
   handleChange = (e) => {
@@ -31,7 +32,8 @@ class App extends Component {
       id: uuid(),
       items: updatedItem,
       item: '',
-      editItem: false
+      editItem: false,
+      disabled: true
     })
 
   }
@@ -62,7 +64,8 @@ class App extends Component {
       items: filteredItems,
       item: selectedItem.title,
       id: id,
-      editItem: true
+      editItem: true,
+      disabled: false
     })
   }
 
@@ -76,7 +79,7 @@ class App extends Component {
               todo input
             </h3>
             <TodoForm item={this.state.item} handleChange={this.handleChange} handleSubmit={this.handleSubmit} editItem={this.state.editItem} />
-            <TodoList items={this.state.items} clearList={this.clearList} handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
+            <TodoList items={this.state.items} clearList={this.clearList} handleDelete={this.handleDelete} handleEdit={this.handleEdit}  disabled={this.state.disabled}/>
           </div>
         </div>
       </div>
